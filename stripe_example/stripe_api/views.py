@@ -1,13 +1,16 @@
+import os
+
 from django.shortcuts import redirect
 
 import stripe
 from django.views import View
 from django.views.generic import TemplateView
+from dotenv import load_dotenv
 
 from stripe_api.models import Item
-
-stripe.api_key = 'sk_test_51M5RHpIGZZJGwlfdY0jAWuauHiAtTNaVBqUE8rVTHVs6Q0p6BODHUn2ZaO4SK0ccowPQdObYwMizgEgkz92XIakY007B3bxbnz'
-
+load_dotenv()
+# stripe.api_key = 'sk_test_51M5RHpIGZZJGwlfdY0jAWuauHiAtTNaVBqUE8rVTHVs6Q0p6BODHUn2ZaO4SK0ccowPQdObYwMizgEgkz92XIakY007B3bxbnz'
+stripe.api_key = os.environ.get("STRIPE_KEY")
 
 class CreateCheckoutSession(View):
     def get(self, request, *args, **kwargs):
