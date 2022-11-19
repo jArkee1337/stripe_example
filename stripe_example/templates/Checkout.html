@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <title>Buy cool new product</title>
+  </head>
+  <body>
+    <p>{{ item.name }}</p>
+    <p>${{ item.price }}</p>
+    <p>{{ item.description }}</p>
+    <form action="{% url 'checkout' item.id %}" method="GET">
+      <button type="submit">Checkout</button>
+    </form>
+  </body>
+</html>
